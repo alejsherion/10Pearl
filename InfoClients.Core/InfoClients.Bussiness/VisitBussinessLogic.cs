@@ -1,6 +1,7 @@
 ﻿using InfoClients.Bussiness.Contracts;
 using InfoClients.Data;
 using InfoClients.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,17 @@ namespace InfoClients.Bussiness
             try
             {
                 visit = visit ?? throw new ArgumentException($"{nameof(visit)} is empty");
+
+                var client = context.Client.Where(c => c.Nit == visit.ClientNit).FirstOrDefault();
+                if (client == null)
+                    return ResultRequest<Visit>.SetErrorResult("Client dont exist");
+
+                visit.VisitTotal = (visit.Net * client.VisitPercentage)/100;
+                client.AvailableCredit -= visit.VisitTotal;
+                if (client.AvailableCredit < 0)
+                    return ResultRequest<Visit>.SetErrorResult("Visit can't registered, client: {} don't have enough credit available");
+
+                context.Client.Update(client);
                 visit = context.Add(visit).Entity;
                 context.SaveChanges();
                 return ResultRequest<Visit>.SetSuccessResult(visit);

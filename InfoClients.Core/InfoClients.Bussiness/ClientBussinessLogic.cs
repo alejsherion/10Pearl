@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using InfoClients.Bussiness.Contracts;
+﻿using InfoClients.Bussiness.Contracts;
 using InfoClients.Data;
 using InfoClients.Data.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace InfoClients.Bussiness
 {
@@ -55,7 +56,19 @@ namespace InfoClients.Bussiness
         /// <returns>client save</returns>
         public ResultRequest<Client> Save(Client client)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                client.AvailableCredit = client.CreditLimit;
+
+                client = context.Client.Add(client).Entity;
+                context.SaveChanges();
+
+                return ResultRequest<Client>.SetSuccessResult(client);
+            }
+            catch (Exception ex)
+            {
+                return ResultRequest<Client>.SetErrorResult(ex.Message);
+            }
         }
 
         /// <summary>
@@ -65,7 +78,34 @@ namespace InfoClients.Bussiness
         /// <returns>client update</returns>
         public ResultRequest<Client> Update(Client client)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                client.FullName = string.Empty;
+                if (!string.IsNullOrEmpty(client.FirstName))
+                    client.FullName += client.FirstName;
+                if (!string.IsNullOrEmpty(client.SecondName))
+                    client.FullName += (string.IsNullOrEmpty(client.FullName) ? "" : " ") + client.SecondName;
+                if (!string.IsNullOrEmpty(client.FirstLastName))
+                    client.FullName += (string.IsNullOrEmpty(client.FullName) ? "" : " ") + client.FirstLastName;
+                if (!string.IsNullOrEmpty(client.SecondLastName))
+                    client.FullName += (string.IsNullOrEmpty(client.FullName) ? "" : " ") + client.SecondLastName;
+
+                // Get visits by calculating available credit
+                var visits = context.Visit.Where(v => v.ClientNit == client.Nit).ToList();
+                if (visits.Count == 0)
+                    client.AvailableCredit = client.CreditLimit;
+                else
+                    client.AvailableCredit = client.CreditLimit - visits.Sum(v => v.Net);
+
+                context.Client.Update(client);
+                context.SaveChanges();
+
+                return ResultRequest<Client>.SetSuccessResult(client);
+            }
+            catch (Exception ex)
+            {
+                return ResultRequest<Client>.SetErrorResult(ex.Message);
+            }
         }
 
         /// <summary>
@@ -77,9 +117,13 @@ namespace InfoClients.Bussiness
         {
             try
             {
-                var client = context.Client.FirstOrDefault(c => c.Nit == nit);
+                var client = context.Client.Include(c => c.Visits).FirstOrDefault(c => c.Nit == nit);
                 if (client == null)
                     return ResultRequest<bool>.SetErrorResult("Client dont exist");
+
+                if (client.Visits.Count > 0)
+                    return ResultRequest<bool>.SetErrorResult("Client have visits, can't delete it");
+
                 context.Remove(client);
                 context.SaveChanges();
                 return ResultRequest<bool>.SetSuccessResult(true);

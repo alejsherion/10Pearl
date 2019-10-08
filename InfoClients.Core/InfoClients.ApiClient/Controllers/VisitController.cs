@@ -39,7 +39,7 @@ namespace InfoClients.ApiClient.Controllers
         /// <param name="visit"></param>
         /// <returns></returns>
         [HttpPost]
-        public ResultRequest<Visit> Save(Visit visit) => _visitBussinessLogic.Save(visit); 
+        public ResultRequest<Visit> Save([FromBody]Visit visit) => _visitBussinessLogic.Save(visit); 
         #endregion
     }
 }

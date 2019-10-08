@@ -28,7 +28,6 @@ namespace InfoClients.Data
         public PearlContext(string connectionString) : base()
         {
             this._connectionString = connectionString;
-            this.Database.EnsureCreated();
         }
         /// <summary>
         /// Builder with parameters
@@ -50,6 +49,8 @@ namespace InfoClients.Data
                     throw new ArgumentException("Database uncofigurated");
                 else
                     optionsBuilder.UseSqlServer(_connectionString);
+
+                //optionsBuilder.UseSqlServer("Data Source=10.70.1.21;Initial Catalog=Banshee;User ID=db;Password=Ophelia19.");
             }
         }
         #endregion

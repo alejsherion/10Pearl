@@ -3,7 +3,7 @@ import React, { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEditClientAction, editClientAction } from '../actions/ClientsAction';
 // Devextreme
-import Form, { Item, RequiredRule, Label, ButtonItem } from 'devextreme-react/form';
+import Form, { SimpleItem, RequiredRule, Label, ButtonItem } from 'devextreme-react/form';
 
 const EditClient = ({ match, history }) => {
 
@@ -12,8 +12,7 @@ const EditClient = ({ match, history }) => {
     const dispatch = useDispatch();
     const editClient = (client) => dispatch(editClientAction(client));
     // State
-    const { client, error } = useSelector(state => state.clients);
-    const { isSuccessfull } = useSelector(state => state.clients);
+    const { client, error, isSuccessfull } = useSelector(state => state.clients);
 
     // Mask Rule
     const rules = { 'X': /[02-9]/ };
@@ -21,17 +20,18 @@ const EditClient = ({ match, history }) => {
     const buttonOptions = {
         text: 'Edit Client',
         type: 'success',
-        useSubmitBehavior: true
+        onClick: e => {
+            if (!e.validationGroup.validate().isValid) {
+                return;
+            }
+            
+            editClient(client);
+        }
     };
-
-    const onFormSubmit = (e) => {
-        e.preventDefault()
-
-        editClient(client);
-
-        //Redirect
-        history.push('/');
-    }
+    const dateOptions = {
+        dateSerializationFormat: 'yyyy-MM-ddTHH:mm:ss',
+        width: '100%'
+    };
 
     useEffect(() => {
         dispatch(getEditClientAction(nit))
@@ -52,55 +52,44 @@ const EditClient = ({ match, history }) => {
 
             <div className="row justify-content-center">
                 <div className="col-md-8">
-                    <form action={'Save-Client'} onSubmit={onFormSubmit} >
-                        <Form
-                            id={'editClient'}
-                            formData={client}
-                            colCount={2}
-                            labelLocation={'top'}
-                        // onFieldDataChanged={onFieldDataChanged}
-                        >
-                            <ButtonItem horizontalAlignment={'center'} colSpan={2} buttonOptions={buttonOptions} />
+                    <Form
+                        id={'editClient'}
+                        formData={client}
+                        colCount={2}
+                        labelLocation={'top'}
+                    >
+                        <ButtonItem horizontalAlignment={'center'} colSpan={2} buttonOptions={buttonOptions} />
 
-                            <Item dataField={'nit'} caption={'Nit'} colSpan={2} editorOptions={{ readOnly: true }}>
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'firstName'} caption={'First Name'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'secondName'} caption={'Second Name'} />
-                            <Item dataField={'firstLastName'} caption={'First Last Name'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'secondLastName'} caption={'Second Last Name'} />
-                            {/* <Item dataField={'fullName'} caption={'Full Name'} colSpan={2} editorOptions={{ readOnly: true }}>
-                                <RequiredRule message={'Requerido'} />
-                            </Item> */}
-                            <Item dataFiled={'birthDate'} editorType={'dxDateBox'} editorOptions={{ width: '100%' }}>
-                                <Label text={'Date of birth'} />
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'address'} caption={'Address'} colSpan={2}>
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'phone'} caption={'Phone'} editorOptions={{ mask: '+000 (X00) 000-0000', maskRules: rules }} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'city'} caption={'City'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'state'} caption={'State'}>
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'country'} caption={'Country'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'creditLimit'} caption={'Credit Limit'} editorType={'dxNumberBox'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
+                        <SimpleItem dataField={'nit'} caption={'Nit'} colSpan={2} editorOptions={{ readOnly: true }}>
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'firstName'} caption={'First Name'} >
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'secondName'} caption={'Second Name'} />
+                        <SimpleItem dataField={'firstLastName'} caption={'First Last Name'} >
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'secondLastName'} caption={'Second Last Name'} />
+                        <SimpleItem dataField={'birthDate'} editorType={'dxDateBox'} editorOptions={dateOptions} >
+                            <Label text={'Date of birth'} />
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'address'} caption={'Address'}/>
+                        <SimpleItem dataField={'phone'} caption={'Phone'} editorOptions={{ mask: '+00 (X00) 000-0000', maskRules: rules }} />
+                        <SimpleItem dataField={'city'} caption={'City'} >
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'state'} caption={'State'}/>
+                        <SimpleItem dataField={'country'} caption={'Country'} />
+                        <SimpleItem dataField={'creditLimit'} caption={'Credit Limit'} editorType={'dxNumberBox'} >
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'visitPercentage'} caption={'Visit Percentage'} editorType={'dxNumberBox'} >
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
 
-                        </Form>
-                    </form>
+                    </Form>
                 </div>
             </div>
         </Fragment>

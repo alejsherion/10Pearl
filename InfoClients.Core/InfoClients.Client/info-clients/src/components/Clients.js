@@ -4,26 +4,26 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { getClientsAction, deleteClientAction } from '../actions/ClientsAction';
 // Devextreme
-import DataGrid, { Column, SearchPanel, Paging } from 'devextreme-react/data-grid';
+import DataGrid, { Column, SearchPanel, Paging,GroupPanel, Grouping, LoadPanel } from 'devextreme-react/data-grid';
 // Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPen, faChartPie, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 // Sweet alert
 import Swal from 'sweetalert2';
 
-const Clients = (props) => {
+const Clients = ({history}) => {
 
     const dispatch = useDispatch();
     const deleteClient = (nit) => dispatch(deleteClientAction(nit));
+    const loadClients = () => dispatch(getClientsAction());
 
-    const loading = useSelector(state => state.clients.loading);
-    const error = useSelector(state => state.clients.error);
-    const clients = useSelector(state => state.clients.clients);
+    const {clients, error} = useSelector(state => state.clients);
 
-    const history = useHistory();
-
-    const goNewClient = () => { history.push('/client'); }
-    const goGeneralCharts = () => { history.push('/chart') }
+    // const history = useHistory();
+    
+    const refreshGrid = () => loadClients();
+    const goNewClient = () => history.push('/client');
+    const goGeneralCharts = () => history.push('/chart');
     const removeClient = (nit) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -42,10 +42,9 @@ const Clients = (props) => {
 
     const cellRender = (row) => (
         <div>
-            <FontAwesomeIcon className="m-2" icon={faMoneyBill} title={'Register Visit'} onClick={() => history.push(`/visit/${row.data.nit}`)} />
-            <FontAwesomeIcon className="m-2" icon={faChartPie} title={'View Chart'} onClick={() => history.push(`/chart/${row.data.nit}`)} />
-            <FontAwesomeIcon className="m-2" icon={faPen} title={'Update'} onClick={() => history.push(`/client/${row.data.nit}`)} />
-            <FontAwesomeIcon className="m-2" icon={faTrash} title={'Delete'} onClick={() => removeClient(row.data.nit)} />
+            <FontAwesomeIcon className="m-2 pointer" icon={faMoneyBill} title={'Register Visit'} onClick={() => history.push(`/visit/${row.data.nit}`)} />
+            <FontAwesomeIcon className="m-2 pointer" icon={faChartPie} title={'View Chart'} onClick={() => history.push(`/chart/${row.data.nit}`)} />
+            <FontAwesomeIcon className="m-2 pointer" icon={faTrash} title={'Delete'} onClick={() => removeClient(row.data.nit)} />
         </div>
     )
 
@@ -60,6 +59,13 @@ const Clients = (props) => {
                 onClick: goNewClient
             }
         }, {
+            location: 'after',
+            widget: 'dxButton',
+            options: {
+                icon: 'refresh',
+                onClick: refreshGrid
+            }
+        }, {
             location: 'before',
             widget: 'dxButton',
             options: {
@@ -70,19 +76,15 @@ const Clients = (props) => {
             }
         });
     }
+    // Event double click in grid
+    const onRowDblClick = (e) => history.push(`/client/${e.data.nit}`);
 
-    useEffect(() => {
-        const loadClients = () => dispatch(getClientsAction());
+    useEffect(() => {        
         loadClients();
     }, []);
 
     return (
         <Fragment>
-            {
-                loading
-                    ? <h1>Loading...</h1>
-                    : null
-            }
             {
                 error
                     ? <div className="font-weight-bold alert alert-danger text-center mt-4">AN ERROR OCCURRED</div>
@@ -91,20 +93,34 @@ const Clients = (props) => {
 
             <DataGrid
                 dataSource={clients}
-                showBorders={true}
                 onToolbarPreparing={onToolbarPreparing}
+                onRowDblClick={onRowDblClick}
+                showBorders={true}
+                showRowLines={true}
+                allowColumnReordering={true}
+                showColumnLines={true}
+                rowAlternationEnabled={true}
+                hoverStateEnabled={true}
+                columnAutoWidth={true}
             >
+                <GroupPanel visible={true} />
+                <Grouping autoExpandAll={false} />
+                <LoadPanel
+                        enabled={true}
+                        shading={true}
+                        showPane={true}
+                        shadingColor={'rgba(0,0,0,0.4)'} />
+
                 <SearchPanel visible={true} highlightCaseSensitive={true} />
 
                 <Column dataField={'fullName'} caption={'Full Name'} />
-                <Column dataField={'phone'} caption={'Phone'} width={100} />
+                <Column dataField={'phone'} caption={'Phone'} width={120} />
                 <Column dataField={'city'} caption={'City'} width={100} />
                 <Column dataField={'state'} caption={'State'} width={100} />
                 <Column dataField={'country'} caption={'Country'} width={100} />
                 <Column dataField={'creditLimit'} caption={'Credit Limit'} width={150} alignment={'right'} format={'currency'} />
                 <Column cellRender={cellRender} width={100} />
 
-                {/* <Pager allowedPageSizes={pageSizes} showPageSizeSelector={true} /> */}
                 <Paging defaultPageSize={10} />
             </DataGrid>
         </Fragment>

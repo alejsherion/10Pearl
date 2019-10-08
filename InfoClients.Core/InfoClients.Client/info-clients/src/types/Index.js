@@ -25,3 +25,7 @@ export const SAVE_VISIT_ERROR = '[SAVE_VISIT_ERROR] Visit save error';
 export const GET_VISIT_BY_CLIENT = '[GET_VISIT_BY_CLIENT] Get visits by client';
 export const GET_VISIT_BY_CLIENT_SUCCESS = '[GET_VISIT_BY_CLIENT_SUCCESS] Get visits by client success';
 export const GET_VISIT_BY_CLIENT_ERROR = '[GET_VISIT_BY_CLIENT_ERROR] Get visits by client error';
+
+export const GET_SALES_REPRESENTATIVE = '[GET_SALES_REPRESENTATIVE] Get Sales representative';
+export const GET_SALES_REPRESENTATIVE_SUCCESS = '[GET_SALES_REPRESENTATIVE_SUCCESS] Get Sales representative success';
+export const GET_SALES_REPRESENTATIVE_ERROR = '[GET_SALES_REPRESENTATIVE_ERROR] Get Sales representative error';

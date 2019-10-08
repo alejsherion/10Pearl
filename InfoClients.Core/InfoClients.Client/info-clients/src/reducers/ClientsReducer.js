@@ -19,7 +19,6 @@ import {
 const initialState = {
     clients: [],
     error: null,
-    loading: false,
     isSuccessfull: false
 };
 
@@ -29,20 +28,18 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 error: null,
-                loading: true,
+                isSuccessfull: false,
                 clients: []
             };
         case DONWLOAD_CLIENTS_SUCCESS:
             return {
                 ...state,
                 error: null,
-                loading: false,
                 clients: action.payload,
             };
         case DONWLOAD_CLIENTS_ERROR:
             return {
                 ...state,
-                loading: false,
                 error: action.payload
             }
         case SET_CLIENT:

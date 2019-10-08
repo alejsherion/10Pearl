@@ -47,7 +47,7 @@ namespace InfoClients.ApiClient.Controllers
         /// <param name="client">object client</param>
         /// <returns>client save</returns>
         [HttpPost]
-        public ResultRequest<Client> Save(Client client) => _clientBussinessLogic.Save(client);
+        public ResultRequest<Client> Save([FromBody]Client client) => _clientBussinessLogic.Save(client);
 
         /// <summary>
         /// Update a client
@@ -55,7 +55,7 @@ namespace InfoClients.ApiClient.Controllers
         /// <param name="client">object client</param>
         /// <returns>client update</returns>
         [HttpPut]
-        public ResultRequest<Client> Update(Client client) => _clientBussinessLogic.Update(client);
+        public ResultRequest<Client> Update([FromBody]Client client) => _clientBussinessLogic.Update(client);
 
         /// <summary>
         /// Remove a client 

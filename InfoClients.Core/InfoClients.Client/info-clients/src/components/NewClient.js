@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // React Router dom
 // import { useHistory } from 'react-router-dom';
 // Devextreme
-import Form, { Item, RequiredRule, Label, ButtonItem } from 'devextreme-react/form';
+import Form, { SimpleItem, RequiredRule, Label, ButtonItem } from 'devextreme-react/form';
 // Actons
 import { saveClientAction } from '../actions/ClientsAction';
 
@@ -13,22 +13,41 @@ const NewClient = ({ history }) => {
     const dispatch = useDispatch('');
     const setClient = (client) => dispatch(saveClientAction(client));
 
-    // const history = useHistory();
-
     // State
     const [client, saveClient] = useState({});
-    const { isSuccessfull } = useSelector(state => state.clients);
+    // const client = {};
+    const { isSuccessfull, error } = useSelector(state => state.clients);
+    
     // Mask Rule
     const rules = { 'X': /[02-9]/ };
     // Buttons options
     const buttonOptions = {
         text: 'Register',
         type: 'success',
-        useSubmitBehavior: true
+
+        onClick: e => {
+            if (!e.validationGroup.validate().isValid){
+                return;
+            }
+
+            setClient(client);
+        }
     };
 
-    // get data from store
-    const error = useSelector((state) => state.clients.error);
+    const dateOptions = {
+        dateSerializationFormat: 'yyyy-MM-ddTHH:mm:ss',
+        width: '100%'
+    };
+    
+    const editorOptionsPrice = {
+        format: '$ #,##0.##'
+    };
+
+    const editorOptionsPercentage = {
+        min: 1,
+        max: 100,
+        format: '#0 %'
+    }
 
     // event for Set Fullname 
     const onFieldDataChanged = (e) => {
@@ -43,7 +62,7 @@ const NewClient = ({ history }) => {
             if (client.firstLastName !== undefined) { fName = fName + ' ' + client.firstLastName; }
             if (client.secondLastName !== undefined) { fName = fName + ' ' + client.secondLastName; }
 
-            saveClient({ ...client, fullName: fName });
+            //saveClient({ ...client, fullName: fName });
         }
         if (e.dataField === 'secondName') {
             if (client.firstName !== undefined) { fName = fName + ' ' + client.firstName; }
@@ -71,13 +90,6 @@ const NewClient = ({ history }) => {
         }
     }
     
-    // event form for save
-    const onFormSubmit = (e) => {
-        e.preventDefault();
-
-        setClient(client);
-    }
-
     useEffect(() => {
         if (isSuccessfull) {
             //Redirect
@@ -93,55 +105,46 @@ const NewClient = ({ history }) => {
 
             <div className="row justify-content-center">
                 <div className="col-md-8">
-                    <form action={'Save-Client'} onSubmit={onFormSubmit} >
-                        <Form
-                            id={'NewClient'}
-                            formData={client}
-                            colCount={2}
-                            labelLocation={'top'}
-                            onFieldDataChanged={onFieldDataChanged}
-                        >
-                            <ButtonItem horizontalAlignment={'center'} colSpan={2} buttonOptions={buttonOptions} />
+                    <Form
+                        id={'NewClient'}
+                        formData={client}
+                        colCount={2}
+                        labelLocation={'top'}
+                        onFieldDataChanged={onFieldDataChanged}
+                    >
+                        <ButtonItem horizontalAlignment={'center'} buttonOptions={buttonOptions} colSpan={2} />
 
-                            <Item dataField={'nit'} caption={'Nit'} colSpan={2}>
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'firstName'} caption={'First Name'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'secondName'} caption={'Second Name'} />
-                            <Item dataField={'firstLastName'} caption={'First Last Name'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'secondLastName'} caption={'Second Last Name'} />
-                            <Item dataField={'fullName'} caption={'Full Name'} colSpan={2} editorOptions={{ readOnly: true }} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataFiled={'birthDate'} editorType={'dxDateBox'} editorOptions={{ width: '100%' }} >
-                                <Label text={'Date of birth'} />
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'address'} caption={'Address'} colSpan={2} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'phone'} caption={'Phone'} editorOptions={{ mask: '+000 (X00) 000-0000', maskRules: rules }} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'city'} caption={'City'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'state'} caption={'State'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'country'} caption={'Country'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
-                            <Item dataField={'creditLimit'} caption={'Credit Limit'} editorType={'dxNumberBox'} >
-                                <RequiredRule message={'Requerido'} />
-                            </Item>
+                        <SimpleItem dataField={'nit'} caption={'Nit'} colSpan={2}>
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'firstName'} caption={'First Name'} >
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'secondName'} caption={'Second Name'} />
+                        <SimpleItem dataField={'firstLastName'} caption={'First Last Name'} >
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'secondLastName'} caption={'Second Last Name'} />
+                        <SimpleItem dataField={'fullName'} caption={'Full Name'} colSpan={2} editorOptions={{ readOnly: true }} />
+                        <SimpleItem dataField={'birthDate'} editorType={'dxDateBox'} editorOptions={dateOptions} >
+                            <Label text={'Date of birth'} />
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'address'} caption={'Address'} colSpan={2} />
+                        <SimpleItem dataField={'phone'} caption={'Phone'} editorOptions={{ mask: '+00 (X00) 000-0000', maskRules: rules }} />
+                        <SimpleItem dataField={'city'} caption={'City'} >
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'state'} caption={'State'} />
+                        <SimpleItem dataField={'country'} caption={'Country'} />
+                        <SimpleItem dataField={'creditLimit'} caption={'Credit Limit'} editorType={'dxNumberBox'} editorOptions={editorOptionsPrice}>
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
+                        <SimpleItem dataField={'visitPercentage'} caption={'Visit Percentage'} editorType={'dxNumberBox'} editorOptions={editorOptionsPercentage}>
+                            <RequiredRule message={'Requerido'} />
+                        </SimpleItem>
 
-                        </Form>
-                    </form>
+                    </Form>
                 </div>
             </div>
         </Fragment>

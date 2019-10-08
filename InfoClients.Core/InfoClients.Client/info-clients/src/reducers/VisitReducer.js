@@ -10,7 +10,6 @@ import {
 const initialState = {
     visits: [],
     error: null,
-    loading: false,
     isSuccessful: false
 }
 
@@ -20,7 +19,6 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 error: null,
-                loading: false,
                 isSuccessful: false
             };
         case SAVE_VISIT_SUCCESS:

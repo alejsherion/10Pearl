@@ -22,3 +22,17 @@ F:\PROJECTS\10Pearls\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp
 F:\PROJECTS\10Pearls\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.csproj.CopyComplete
 F:\PROJECTS\10Pearls\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.dll
 F:\PROJECTS\10Pearls\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.pdb
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Bussiness.deps.json
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Bussiness.dll
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Bussiness.pdb
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Data.dll
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Data.pdb
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.csprojAssemblyReference.cache
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.csproj.CoreCompileInputs.cache
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.AssemblyInfoInputs.cache
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.AssemblyInfo.cs
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.csproj.CopyComplete
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.dll
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.pdb
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Core.dll
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Core.xml

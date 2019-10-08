@@ -17,8 +17,7 @@ import {
 } from '../types/Index';
 
 import clientAxios from '../config/clientAxios';
-import Swal from 'sweetalert2';
-import { ResultRequest } from '../models/ResultRequest';
+import notify from 'devextreme/ui/notify';
 
 export function getClientsAction() {
     return (dispatch) => {
@@ -30,7 +29,7 @@ export function getClientsAction() {
                 if (response.data.isSuccesful) {
                     dispatch(getClientsSuccess(response.data.result))
                 } else {
-                    dispatch(getClientsError(response.data))
+                    dispatch(getClientsError({ message: response.data.messages}))
                 }
             })
             .catch(error => dispatch(getClientsError(error)))
@@ -45,11 +44,11 @@ export function saveClientAction(client) {
             .post('/client', client)
             .then(response => {
                 if (response.data.isSuccesful) {
-                    Swal.fire('Save', 'Client save success', 'success')
+                    notify('Client save success', 'success', 1000)
                     
                     dispatch(saveClientSuccess(response.data.result));
                 } else {
-                    dispatch(saveClientError(response.data))
+                    dispatch(saveClientError({ message: response.data.messages}))
                 }
             })
             .catch(error => dispatch(saveClientError(error)));
@@ -64,11 +63,11 @@ export function editClientAction(client) {
             .put('/client', client)
             .then(response => {
                 if (response.data.isSuccesful) {
-                    Swal.fire('Update', 'Client update success', 'success')
-    
+                    notify('Client update success', 'success', 1000)
+
                     dispatch(editClientSuccess(response.data));
                 } else {
-                    dispatch(editClientError(response.data))
+                    dispatch(editClientError({ message: response.data.messages}))
                 }
             })
             .catch(error => dispatch(editClientError(error)));
@@ -83,11 +82,11 @@ export function deleteClientAction(nit) {
             .delete(`/client?nit=${nit}`)
             .then(response => {
                 if (response.data.isSuccesful) {
-                    Swal.fire('Delete', 'Client delete success', 'success')
+                    notify('Client delete success', 'success', 1000)
                 
                     dispatch(deleteClientSuccess(nit));
                 } else {
-                    dispatch(deleteClienteError(response.data))
+                    dispatch(deleteClienteError({ message: response.data.messages}))
                 }
             })
             .catch(error => dispatch(deleteClienteError(error)))
@@ -99,12 +98,12 @@ export function getEditClientAction(nit) {
         dispatch(getClient());
 
         clientAxios
-            .get(`/client?nit=${nit}`)
+            .get(`/client/get?nit=${nit}`)
             .then(response => {
                 if (response.data.isSuccesful) {
-                    dispatch(getClientSuccess(response.data))
+                    dispatch(getClientSuccess(response.data.result))
                 } else {
-                    dispatch(getClientError(response.data))
+                    dispatch(getClientError({ message: response.data.messages}))
                 }
             })
             .catch(error => dispatch(getClientError(error)))

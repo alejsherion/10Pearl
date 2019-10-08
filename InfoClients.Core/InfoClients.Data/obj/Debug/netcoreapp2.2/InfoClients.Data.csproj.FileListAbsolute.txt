@@ -20,3 +20,13 @@ F:\PROJECTS\10Pearls\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\I
 F:\PROJECTS\10Pearls\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.AssemblyInfo.cs
 F:\PROJECTS\10Pearls\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.dll
 F:\PROJECTS\10Pearls\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.pdb
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.deps.json
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.runtimeconfig.json
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.runtimeconfig.dev.json
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.dll
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.pdb
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.csproj.CoreCompileInputs.cache
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.AssemblyInfoInputs.cache
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.AssemblyInfo.cs
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.dll
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.pdb

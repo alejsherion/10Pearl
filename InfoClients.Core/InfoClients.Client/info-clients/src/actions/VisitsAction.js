@@ -20,7 +20,7 @@ export function getVisitAction(nit) {
                 if (response.data.isSuccesful) {
                     dispatch(getVisitByClientSuccess(response.data.result))
                 } else {
-                    dispatch(getVisitByClientError(response.data))
+                    dispatch(getVisitByClientError({ message: response.data.messages}))
                 }
             })
             .catch(error => dispatch(getVisitByClientError(error)))
@@ -30,16 +30,16 @@ export function getVisitAction(nit) {
 export function saveVisitAction(visit) {
     return (dispatch) => {
         dispatch(saveVisit());
-
+        
         clientAxios
             .post('/visit', visit)
             .then(response => {
                 if (response.data.isSuccesful) {
                     Swal.fire('Save', 'Visit save success', 'success');
-    
+                    
                     dispatch(saveVisitSuccess(response.data.result));
                 } else {
-                    dispatchEvent(saveVisitError(response.data))
+                    dispatchEvent(saveVisitError({ message: response.data.messages}))
                 }
             })
             .catch(error => dispatch(saveVisitError(error)))

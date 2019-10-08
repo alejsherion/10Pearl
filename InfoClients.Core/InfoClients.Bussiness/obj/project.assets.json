@@ -3595,23 +3595,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alejo\\.nuget\\packages\\": {},
+    "C:\\Users\\alejandrovp\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\PROJECTS\\10Pearls\\InfoClients.Core\\InfoClients.Bussiness\\InfoClients.Bussiness.csproj",
+      "projectUniqueName": "C:\\Users\\alejandrovp\\Desktop\\10Pearls\\10PearlsGit\\InfoClients.Core\\InfoClients.Bussiness\\InfoClients.Bussiness.csproj",
       "projectName": "InfoClients.Bussiness",
-      "projectPath": "F:\\PROJECTS\\10Pearls\\InfoClients.Core\\InfoClients.Bussiness\\InfoClients.Bussiness.csproj",
-      "packagesPath": "C:\\Users\\Alejo\\.nuget\\packages\\",
-      "outputPath": "F:\\PROJECTS\\10Pearls\\InfoClients.Core\\InfoClients.Bussiness\\obj\\",
+      "projectPath": "C:\\Users\\alejandrovp\\Desktop\\10Pearls\\10PearlsGit\\InfoClients.Core\\InfoClients.Bussiness\\InfoClients.Bussiness.csproj",
+      "packagesPath": "C:\\Users\\alejandrovp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alejandrovp\\Desktop\\10Pearls\\10PearlsGit\\InfoClients.Core\\InfoClients.Bussiness\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Alejo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\alejandrovp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3619,13 +3619,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://bpm-ap:9090/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "F:\\PROJECTS\\10Pearls\\InfoClients.Core\\InfoClients.Data\\InfoClients.Data.csproj": {
-              "projectPath": "F:\\PROJECTS\\10Pearls\\InfoClients.Core\\InfoClients.Data\\InfoClients.Data.csproj"
+            "C:\\Users\\alejandrovp\\Desktop\\10Pearls\\10PearlsGit\\InfoClients.Core\\InfoClients.Data\\InfoClients.Data.csproj": {
+              "projectPath": "C:\\Users\\alejandrovp\\Desktop\\10Pearls\\10PearlsGit\\InfoClients.Core\\InfoClients.Data\\InfoClients.Data.csproj"
             }
           }
         }
@@ -3647,16 +3648,10 @@
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }
