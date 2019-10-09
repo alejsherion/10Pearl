@@ -4,6 +4,7 @@ using InfoClients.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 
 namespace InfoClients.Bussiness
@@ -46,6 +47,72 @@ namespace InfoClients.Bussiness
             catch (Exception ex)
             {
                 return ResultRequest<IEnumerable<Client>>.SetErrorResult(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Get clients chart information
+        /// </summary>
+        /// <returns></returns>
+        public ResultRequest<IEnumerable<dynamic>> GetCliensCharts()
+        {
+            try
+            {
+                var clients = context.Client.ToList();
+                List<Dictionary<string, string>> dictionary = new List<Dictionary<string, string>>();
+                foreach (var client in clients)
+                {
+                    if (client == null)
+                        return ResultRequest<IEnumerable<dynamic>>.SetErrorResult("Client don't exist!");
+
+                    var visits = context.Visit.Where(v => v.ClientNit == client.Nit).ToList();
+
+                    var result = new List<dynamic>();
+                    var listVisits = visits.GroupBy(v => $"{v.VisitDate.Month}-{v.VisitDate.Year}")
+                                           .Select(v => new { Date = v.Key, VisitTotal = v.Sum(x => x.VisitTotal) })
+                                           .ToList();
+                    
+                    foreach (var lst in listVisits)
+                        dictionary.Add(new Dictionary<string, string> { { "Date", lst.Date }, { client.Nit, lst.VisitTotal.ToString() } });
+                }
+
+                return ResultRequest<IEnumerable<dynamic>>.SetSuccessResult(dictionary);
+            }
+            catch (Exception ex)
+            {
+                return ResultRequest<IEnumerable<dynamic>>.SetErrorResult(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Get Client chart information
+        /// </summary>
+        /// <param name="nit">identification number of client</param>
+        /// <returns>lista data for chart</returns>
+        public ResultRequest<IEnumerable<dynamic>> GetClientChar(string nit)
+        {
+            try
+            {
+                var client = context.Client.FirstOrDefault(c => c.Nit == nit);
+                if (client == null)
+                    return ResultRequest<IEnumerable<dynamic>>.SetErrorResult("Client don't exist!");
+
+                var visits = context.Visit.Where(v => v.ClientNit == nit).ToList();
+
+                var result = new List<dynamic>();
+                var listVisits = visits.GroupBy(v => $"{v.VisitDate.Month}-{v.VisitDate.Year}")
+                                       .Select(v => new { Date = v.Key, VisitTotal = v.Sum(x => x.VisitTotal) })
+                                       .ToList();
+
+                List<Dictionary<string, string>> dictionary = new List<Dictionary<string, string>>();
+                foreach (var lst in listVisits)
+                    dictionary.Add(new Dictionary<string, string> { { "Date", lst.Date }, { client.Nit, lst.VisitTotal.ToString() } });
+
+                return ResultRequest<IEnumerable<dynamic>>.SetSuccessResult(dictionary);
+            }
+            catch (Exception ex)
+            {
+                return ResultRequest<IEnumerable<dynamic>>.SetErrorResult(ex.Message);
             }
         }
 

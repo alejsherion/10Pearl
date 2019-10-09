@@ -20,6 +20,22 @@ namespace InfoClients.Bussiness
 
         #region Methods
         /// <summary>
+        /// Lista todas las visitas para las graficas
+        /// </summary>
+        /// <returns></returns>
+        public ResultRequest<IEnumerable<Visit>> GetAll()
+        {
+            try
+            {
+                return ResultRequest<IEnumerable<Visit>>.SetSuccessResult(context.Visit.ToList());
+            }
+            catch (Exception ex)
+            {
+                return ResultRequest<IEnumerable<Visit>>.SetErrorResult(ex.Message);
+            }
+        }
+
+        /// <summary>
         /// List visits for client
         /// </summary>
         /// <param name="nit">id client</param>
@@ -28,7 +44,7 @@ namespace InfoClients.Bussiness
         {
             try
             {
-                return ResultRequest<IEnumerable<Visit>>.SetSuccessResult(context.Visit.Where(v => v.ClientNit == nit).ToList());
+                return ResultRequest<IEnumerable<Visit>>.SetSuccessResult(context.Visit.Where(v => v.ClientNit == nit).OrderByDescending(v => v.VisitDate).ToList());
             }
             catch (Exception ex)
             {
@@ -54,11 +70,12 @@ namespace InfoClients.Bussiness
                 visit.VisitTotal = (visit.Net * client.VisitPercentage)/100;
                 client.AvailableCredit -= visit.VisitTotal;
                 if (client.AvailableCredit < 0)
-                    return ResultRequest<Visit>.SetErrorResult("Visit can't registered, client: {} don't have enough credit available");
+                    return ResultRequest<Visit>.SetErrorResult($"Visit can't registered, client: {visit.Client.Nit} don't have enough credit available");
 
                 context.Client.Update(client);
                 visit = context.Add(visit).Entity;
                 context.SaveChanges();
+                visit.Client = null;
                 return ResultRequest<Visit>.SetSuccessResult(visit);
             }
             catch (Exception ex)

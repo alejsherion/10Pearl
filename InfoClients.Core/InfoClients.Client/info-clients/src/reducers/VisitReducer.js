@@ -4,7 +4,10 @@ import {
     SAVE_VISIT_ERROR,
     GET_VISIT_BY_CLIENT,
     GET_VISIT_BY_CLIENT_SUCCESS,
-    GET_VISIT_BY_CLIENT_ERROR
+    GET_VISIT_BY_CLIENT_ERROR,
+    GET_ALL_VISITS,
+    GET_ALL_VISITS_SUCCESS,
+    GET_ALL_VISITS_ERROR
 } from '../types/Index';
 
 const initialState = {
@@ -51,6 +54,20 @@ export default function (state = initialState, action) {
                 error: action.payload,
                 isSuccessful: false
             }
+        case GET_ALL_VISITS:
+            return {
+                ...state
+            };
+        case GET_ALL_VISITS_SUCCESS:
+            return {
+                ...state,
+                visits: action.payload
+            };
+        case GET_ALL_VISITS_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };
         default:
             return {
                 ...state

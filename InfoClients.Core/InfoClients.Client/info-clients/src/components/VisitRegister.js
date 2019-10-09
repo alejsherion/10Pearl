@@ -122,7 +122,7 @@ const VisitRegister = ({ match, history }) => {
                         <Column dataField={'salesRepresentativeId'} caption={'Sales Representative'} width={180}>
                             <Lookup dataSource={salesRepresentatives} displayExpr={'name'} valueExpr={'id'}/>
                         </Column>
-                        <Column dataFiled={'visitDate'} caption={'Visit Date'} dataType={'date'} width={100} />
+                        <Column dataField={'visitDate'} caption={'Visit Date'} dataType={'date'} width={100} />
                         <Column dataField={'net'} caption={'Net'} width={120} dataType={'number'} format={'currency'} alignment={'right'}/>
                         <Column dataField={'description'} caption={'Description'} />
                     

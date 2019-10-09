@@ -36,3 +36,15 @@ C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.B
 C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.pdb
 C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Core.dll
 C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Mvc.Core.xml
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Bussiness.deps.json
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Bussiness.dll
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Bussiness.pdb
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Data.dll
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\bin\Debug\netcoreapp2.2\InfoClients.Data.pdb
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.csprojAssemblyReference.cache
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.csproj.CoreCompileInputs.cache
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.AssemblyInfoInputs.cache
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.AssemblyInfo.cs
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.csproj.CopyComplete
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.dll
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Bussiness\obj\Debug\netcoreapp2.2\InfoClients.Bussiness.pdb

@@ -15,7 +15,7 @@ import Header from './components/Header';
 import Clients from './components/Clients';
 import NewClient from './components/NewClient';
 import EditClient from './components/EditClient';
-import Chart from './components/Chart';
+import GeneralChart from './components/GeneralChart';
 import ClientChart from './components/ClientChart';
 import VisitRegister from './components/VisitRegister';
 
@@ -31,7 +31,7 @@ function App() {
             <Route exact path="/" component={Clients} />
             <Route exact path="/client" component={NewClient} />
             <Route exact path="/client/:nit" component={EditClient} />           
-            <Route exact path="/chart" component={Chart} />           
+            <Route exact path="/chart" component={GeneralChart} />           
             <Route exact path="/chart/:nit" component={ClientChart} />
             <Route exact path="/visit/:nit" component={VisitRegister} />            
           </Switch>

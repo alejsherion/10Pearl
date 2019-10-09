@@ -116,9 +116,10 @@ const Clients = ({history}) => {
                 <Column dataField={'fullName'} caption={'Full Name'} />
                 <Column dataField={'phone'} caption={'Phone'} width={120} />
                 <Column dataField={'city'} caption={'City'} width={100} />
-                <Column dataField={'state'} caption={'State'} width={100} />
-                <Column dataField={'country'} caption={'Country'} width={100} />
+                {/* <Column dataField={'state'} caption={'State'} width={100} />
+                <Column dataField={'country'} caption={'Country'} width={100} /> */}
                 <Column dataField={'creditLimit'} caption={'Credit Limit'} width={150} alignment={'right'} format={'currency'} />
+                <Column dataField={'availableCredit'} caption={'Available Credit'} width={150} alignment={'right'} format={'currency'} />
                 <Column cellRender={cellRender} width={100} />
 
                 <Paging defaultPageSize={10} />

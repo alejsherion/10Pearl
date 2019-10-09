@@ -23,5 +23,10 @@ namespace InfoClients.Bussiness.Contracts
         /// <param name="visit"></param>
         /// <returns></returns>
         ResultRequest<Visit> Save(Visit visit);
+        /// <summary>
+        /// Lista todas las visitas para las graficas
+        /// </summary>
+        /// <returns></returns>
+        ResultRequest<IEnumerable<Visit>> GetAll();
     }
 }

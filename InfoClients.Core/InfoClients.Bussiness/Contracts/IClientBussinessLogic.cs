@@ -40,5 +40,16 @@ namespace InfoClients.Bussiness.Contracts
         /// <param name="nit">idetification of client</param>
         /// <returns>validate if remove it</returns>
         ResultRequest<bool> Remove(string nit);
+        /// <summary>
+        /// Get clients chart information
+        /// </summary>
+        /// <returns></returns>
+        ResultRequest<IEnumerable<dynamic>> GetCliensCharts();
+        /// <summary>
+        /// Get Client chart information
+        /// </summary>
+        /// <param name="nit">identification number of client</param>
+        /// <returns>lista data for chart</returns>
+        ResultRequest<IEnumerable<dynamic>> GetClientChar(string nit);
     }
 }

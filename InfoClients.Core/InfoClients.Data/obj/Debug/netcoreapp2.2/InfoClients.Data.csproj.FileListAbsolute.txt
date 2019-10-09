@@ -30,3 +30,14 @@ C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.D
 C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.AssemblyInfo.cs
 C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.dll
 C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.pdb
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.deps.json
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.runtimeconfig.json
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.runtimeconfig.dev.json
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.dll
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\bin\Debug\netcoreapp2.2\InfoClients.Data.pdb
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.csprojAssemblyReference.cache
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.csproj.CoreCompileInputs.cache
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.AssemblyInfoInputs.cache
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.AssemblyInfo.cs
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.dll
+F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.pdb

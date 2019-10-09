@@ -20,10 +20,18 @@ namespace InfoClients.ApiClient.Controllers
         public VisitController(IVisitBussinessLogic visitBussinessLogic)
         {
             _visitBussinessLogic = visitBussinessLogic;
-        } 
+        }
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Lista todas las visitas para las graficas
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetAll")]
+        public ResultRequest<IEnumerable<Visit>> GetAll() => _visitBussinessLogic.GetAll();
+        
         /// <summary>
         /// List visits for client
         /// </summary>

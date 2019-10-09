@@ -42,6 +42,23 @@ namespace InfoClients.ApiClient.Controllers
         public ResultRequest<IEnumerable<Client>> GetAll() => _clientBussinessLogic.GetAll();
 
         /// <summary>
+        /// Get clients chart information
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetCliensCharts")]
+        public ResultRequest<IEnumerable<dynamic>> GetCliensCharts() => _clientBussinessLogic.GetCliensCharts();
+
+        /// <summary>
+        /// Get Client chart information
+        /// </summary>
+        /// <param name="nit">identification number of client</param>
+        /// <returns>lista data for chart</returns>
+        [HttpGet]
+        [Route("GetClientChar")]
+        public ResultRequest<IEnumerable<dynamic>> GetClientChar(string nit) => _clientBussinessLogic.GetClientChar(nit);
+
+        /// <summary>
         /// Save a client
         /// </summary>
         /// <param name="client">object client</param>

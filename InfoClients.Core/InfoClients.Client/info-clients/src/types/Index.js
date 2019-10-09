@@ -29,3 +29,7 @@ export const GET_VISIT_BY_CLIENT_ERROR = '[GET_VISIT_BY_CLIENT_ERROR] Get visits
 export const GET_SALES_REPRESENTATIVE = '[GET_SALES_REPRESENTATIVE] Get Sales representative';
 export const GET_SALES_REPRESENTATIVE_SUCCESS = '[GET_SALES_REPRESENTATIVE_SUCCESS] Get Sales representative success';
 export const GET_SALES_REPRESENTATIVE_ERROR = '[GET_SALES_REPRESENTATIVE_ERROR] Get Sales representative error';
+
+export const GET_ALL_VISITS = '[GET_ALL_VISITS] Get all visits';
+export const GET_ALL_VISITS_SUCCESS = '[GET_ALL_VISITS_SUCCESS] Get all visits success';
+export const GET_ALL_VISITS_ERROR = '[GET_ALL_VISITS_ERROR] Get all visits error';
