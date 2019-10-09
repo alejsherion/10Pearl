@@ -91,6 +91,7 @@ const NewClient = ({ history }) => {
     }
     
     useEffect(() => {
+        console.log(isSuccessfull)
         if (isSuccessfull) {
             //Redirect
             history.push('/');

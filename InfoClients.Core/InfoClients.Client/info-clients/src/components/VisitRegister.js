@@ -19,7 +19,7 @@ const VisitRegister = ({ match, history }) => {
     const loadSalesRepresentatives = () => dispatch(getSalesRepresentativeAction());
 
     // State
-    const { isSuccessfull, error, visits } = useSelector(state => state.visits);
+    const { isSuccessful, error, visits } = useSelector(state => state.visits);
     const {salesRepresentatives} = useSelector(state => state.salesRepresentative);
     const [visit, setVisit] = useState({});
 
@@ -50,11 +50,12 @@ const VisitRegister = ({ match, history }) => {
     }, [nit]);
 
     useEffect(() => {
-        if (isSuccessfull) {
+        if (isSuccessful) {
+
             //Redirect
             history.push('/');
         }
-    }, [isSuccessfull]);
+    }, [isSuccessful]);
 
     useEffect(() => {
         loadVisits(nit);

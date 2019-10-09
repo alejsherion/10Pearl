@@ -13,11 +13,19 @@ import {
     GET_CLIENT_FOR_EDIT_ERROR,
     EDIT_CLIENT,
     EDIT_CLIENT_SUCCESS,
-    EDIT_CLIENT_ERROR
+    EDIT_CLIENT_ERROR,
+    GET_CHART_INFO_CLIENT,
+    GET_CHART_INFO_CLIENT_SUCCESS,
+    GET_CHART_INFO_CLIENT_ERROR,
+    GET_CHART_INFO_CLIENTS,
+    GET_CHART_INFO_CLIENTS_SUCCESS,
+    GET_CHART_INFO_CLIENTS_ERROR
 } from '../types/Index';
 
 const initialState = {
     clients: [],
+    client: null,
+    chartInfo: [],
     error: null,
     isSuccessfull: false
 };
@@ -112,6 +120,36 @@ export default function (state = initialState, action) {
                 ...state,
                 error: action.payload,
                 isSuccessfull: false
+            };
+        case GET_CHART_INFO_CLIENT:
+            return {
+                ...state,
+                isSuccessfull: false,
+                error: null
+            };
+        case GET_CHART_INFO_CLIENT_SUCCESS:
+            return {
+                ...state,
+                chartInfo: action.payload
+            };
+        case GET_CHART_INFO_CLIENT_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };
+        case GET_CHART_INFO_CLIENTS: 
+            return {
+                ...state
+            };
+        case GET_CHART_INFO_CLIENTS_SUCCESS: 
+            return {
+                ...state,
+                chartInfo: action.payload
+            };
+        case GET_CHART_INFO_CLIENTS_ERROR: 
+            return {
+                ...state,
+                error: action.payload
             };
         default:
             return state;

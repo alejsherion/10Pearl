@@ -13,7 +13,13 @@ import {
     GET_CLIENT_FOR_EDIT_ERROR,
     EDIT_CLIENT,
     EDIT_CLIENT_SUCCESS,
-    EDIT_CLIENT_ERROR
+    EDIT_CLIENT_ERROR,
+    GET_CHART_INFO_CLIENT,
+    GET_CHART_INFO_CLIENT_SUCCESS,
+    GET_CHART_INFO_CLIENT_ERROR,
+    GET_CHART_INFO_CLIENTS,
+    GET_CHART_INFO_CLIENTS_SUCCESS,
+    GET_CHART_INFO_CLIENTS_ERROR
 } from '../types/Index';
 
 import clientAxios from '../config/clientAxios';
@@ -110,6 +116,40 @@ export function getEditClientAction(nit) {
     }
 }
 
+export function getChartInfoClientsAction() {
+    return (dispatch) => {
+        dispatch(getChartInfoClients());
+
+        clientAxios
+            .get('client/GetCliensCharts')
+            .then(response => {
+                if (response.data.isSuccesful) {
+                    dispatch(getChartInfoClientsSuccess(response.data.result))
+                } else {
+                    dispatch(getChartInfoClientsError({message: response.data.messages}));
+                }
+            })
+            .catch(error => dispatch(getChartInfoClients(error)));
+    };
+}
+
+export function getChartInfoClientAction(nit) {
+    return (dispatch) => {
+        dispatch(getCharInfoClient());
+
+        clientAxios
+            .get(`Client/GetClientChar?nit=${nit}`)
+            .then(response => {
+                if (response.data.isSuccesful) {
+                    dispatch(getCharInfoClientSuccess(response.data.result));
+                } else {
+                    dispatch(getCharInfoClientError({ message: response.data.messages }))
+                }
+            })
+            .catch(error => dispatch(getCharInfoClientError(error)))
+    };
+}
+
 // Const for definition actions
 export const getClients = () => ({
     type: GET_LIST_CLIENTS
@@ -170,4 +210,25 @@ export const editClientError = (error) => ({
     type: EDIT_CLIENT_ERROR,
     payload: error
 });
-
+export const getCharInfoClient = () => ({
+    type: GET_CHART_INFO_CLIENT
+});
+export const getCharInfoClientSuccess = (chartInfo) => ({
+    type: GET_CHART_INFO_CLIENT_SUCCESS,
+    payload: chartInfo
+})
+export const getCharInfoClientError = error => ({
+    type: GET_CHART_INFO_CLIENT_ERROR,
+    error: error
+});
+export const getChartInfoClients = () => ({
+    type: GET_CHART_INFO_CLIENTS
+});
+export const getChartInfoClientsSuccess = chartInfo => ({
+    type: GET_CHART_INFO_CLIENTS_SUCCESS,
+    payload: chartInfo
+});
+export const getChartInfoClientsError = error => ({
+    type: GET_CHART_INFO_CLIENTS_ERROR,
+    payload: error
+});

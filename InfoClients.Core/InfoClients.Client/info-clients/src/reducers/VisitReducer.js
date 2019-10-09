@@ -45,18 +45,17 @@ export default function (state = initialState, action) {
         case GET_VISIT_BY_CLIENT_SUCCESS:
             return {
                 ...state,
-                visits: action.payload,
-                isSuccessful: true
+                visits: action.payload
             }
         case GET_VISIT_BY_CLIENT_ERROR:
             return {
                 ...state,
-                error: action.payload,
-                isSuccessful: false
+                error: action.payload
             }
         case GET_ALL_VISITS:
             return {
-                ...state
+                ...state,
+                isSuccessful: false
             };
         case GET_ALL_VISITS_SUCCESS:
             return {

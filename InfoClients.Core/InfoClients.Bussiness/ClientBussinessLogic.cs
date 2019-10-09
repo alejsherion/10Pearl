@@ -59,21 +59,21 @@ namespace InfoClients.Bussiness
             try
             {
                 var clients = context.Client.ToList();
-                List<Dictionary<string, string>> dictionary = new List<Dictionary<string, string>>();
-                foreach (var client in clients)
+                var visits = context.Visit.ToList();
+                List<Dictionary<string, dynamic>> dictionary = new List<Dictionary<string, dynamic>>();
+
+                var visitOrder = visits.GroupBy(v => $"{v.VisitDate.Year}{v.VisitDate.Month.ToString("00")}");
+                foreach (var visitO in visitOrder)
                 {
-                    if (client == null)
-                        return ResultRequest<IEnumerable<dynamic>>.SetErrorResult("Client don't exist!");
+                    var item = new Dictionary<string, dynamic> { { "Date", visitO.Key } };
 
-                    var visits = context.Visit.Where(v => v.ClientNit == client.Nit).ToList();
+                    var visitsC = visitO.GroupBy(v => v.ClientNit)
+                                        .OrderBy(v => v.Key)    
+                                        .Select(s => new { Client = s.Key, Total = s.Sum(m => m.VisitTotal) });
+                    foreach (var viClient in visitsC)
+                        item.Add(viClient.Client, viClient.Total);
 
-                    var result = new List<dynamic>();
-                    var listVisits = visits.GroupBy(v => $"{v.VisitDate.Month}-{v.VisitDate.Year}")
-                                           .Select(v => new { Date = v.Key, VisitTotal = v.Sum(x => x.VisitTotal) })
-                                           .ToList();
-                    
-                    foreach (var lst in listVisits)
-                        dictionary.Add(new Dictionary<string, string> { { "Date", lst.Date }, { client.Nit, lst.VisitTotal.ToString() } });
+                    dictionary.Add(item);
                 }
 
                 return ResultRequest<IEnumerable<dynamic>>.SetSuccessResult(dictionary);
@@ -99,14 +99,14 @@ namespace InfoClients.Bussiness
 
                 var visits = context.Visit.Where(v => v.ClientNit == nit).ToList();
 
-                var result = new List<dynamic>();
-                var listVisits = visits.GroupBy(v => $"{v.VisitDate.Month}-{v.VisitDate.Year}")
+                var listVisits = visits.GroupBy(v => $"{v.VisitDate.Year}{v.VisitDate.Month.ToString("00")}")
+                                       .OrderBy(v => v.Key)
                                        .Select(v => new { Date = v.Key, VisitTotal = v.Sum(x => x.VisitTotal) })
                                        .ToList();
 
-                List<Dictionary<string, string>> dictionary = new List<Dictionary<string, string>>();
+                List<Dictionary<string, dynamic>> dictionary = new List<Dictionary<string, dynamic>>();
                 foreach (var lst in listVisits)
-                    dictionary.Add(new Dictionary<string, string> { { "Date", lst.Date }, { client.Nit, lst.VisitTotal.ToString() } });
+                    dictionary.Add(new Dictionary<string, dynamic> { { "Date", lst.Date }, { client.Nit, lst.VisitTotal } });
 
                 return ResultRequest<IEnumerable<dynamic>>.SetSuccessResult(dictionary);
             }

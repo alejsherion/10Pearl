@@ -33,3 +33,11 @@ export const GET_SALES_REPRESENTATIVE_ERROR = '[GET_SALES_REPRESENTATIVE_ERROR] 
 export const GET_ALL_VISITS = '[GET_ALL_VISITS] Get all visits';
 export const GET_ALL_VISITS_SUCCESS = '[GET_ALL_VISITS_SUCCESS] Get all visits success';
 export const GET_ALL_VISITS_ERROR = '[GET_ALL_VISITS_ERROR] Get all visits error';
+
+export const GET_CHART_INFO_CLIENT = '[GET_CHART_INFO_CLIENT] Get info chart in client';
+export const GET_CHART_INFO_CLIENT_SUCCESS = '[GET_CHART_INFO_CLIENT] Get info chart in client success';
+export const GET_CHART_INFO_CLIENT_ERROR = '[GET_CHART_INFO_CLIENT] Get info chart in client error';
+
+export const GET_CHART_INFO_CLIENTS = '[GET_CHART_INFO_CLIENTS] Get chart info client';
+export const GET_CHART_INFO_CLIENTS_SUCCESS = '[GET_CHART_INFO_CLIENTS_SUCCESS] Get chart info client success';
+export const GET_CHART_INFO_CLIENTS_ERROR = '[GET_CHART_INFO_CLIENTS_ERROR] Get chart info client error';

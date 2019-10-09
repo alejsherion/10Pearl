@@ -41,3 +41,4 @@ F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.
 F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.AssemblyInfo.cs
 F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.dll
 F:\PROJECTS\Git\10Pearl\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.pdb
+C:\Users\alejandrovp\Desktop\10Pearls\10PearlsGit\InfoClients.Core\InfoClients.Data\obj\Debug\netcoreapp2.2\InfoClients.Data.csprojAssemblyReference.cache
